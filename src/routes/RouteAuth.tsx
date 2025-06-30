@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import NotAuthorized from "../pages/NotAuthorized";
+import NotAuthorized from "../pages/common/NotAuthorized";
 import Layout from "../Layout";
 
 interface PrivateRouteProps {

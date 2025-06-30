@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "../pages/NotFound";
+import NotFound from "../pages/common/NotFound";
 import { PrivateRoute } from "./RouteAuth";
-import NotAuthorized from "../pages/NotAuthorized";
+import NotAuthorized from "../pages/common/NotAuthorized";
 import Login from "../pages/Login";
-import OEE from "../pages/OEE";
+import Oee from "../pages/Oee";
+import OperacaoDiaria from "../pages/OperacaoDiaria";
 
 export const AppRoutes = () => {
     return (
@@ -12,8 +13,12 @@ export const AppRoutes = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
 
-                <Route path="/OEE" element={<PrivateRoute permissions={['admin']} />}>
-                    <Route index element={<OEE />} />
+                <Route path="/oee" element={<PrivateRoute permissions={['admin']} />}>
+                    <Route index element={<Oee />} />
+                </Route>
+
+                <Route path="/operacao-diaria" element={<PrivateRoute permissions={['USER']} />}>
+                    <Route index element={<OperacaoDiaria />} />
                 </Route>
 
                 <Route path='/not-authorized' element={<NotAuthorized />} />
