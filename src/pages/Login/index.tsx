@@ -3,6 +3,7 @@ import bgLogin from '../../assets/images/bglogin.jpg';
 import logoEquatorial from '../../assets/images/logo-equatorial.png';
 import logoEquatorialBranca from '../../assets/images/logo-equatorial-branca.png';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginForm {
     username: string;
@@ -11,9 +12,13 @@ interface LoginForm {
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>();
+    const navigate = useNavigate();
 
     const onSubmit = (data: LoginForm) => {
         console.log(data);
+        if(data.username === 'admin' && data.password === 'admin123') {
+            navigate('/oee');
+        }
     };
 
     // const onFinish = async (values: LoginFormValues) => {

@@ -17,7 +17,7 @@ export const AppRoutes = () => {
                     <Route index element={<Oee />} />
                 </Route>
 
-                <Route path="/operacao-diaria" element={<PrivateRoute permissions={['USER']} />}>
+                <Route path="/operacao-diaria" element={<PrivateRoute permissions={['admin']} />}>
                     <Route index element={<OperacaoDiaria />} />
                 </Route>
 
