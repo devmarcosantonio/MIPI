@@ -1,11 +1,17 @@
 import { AppRoutes } from "./routes"
 import { SideBarProvider } from "./providers/SideBarProvider"
+import { setupStore } from "./store"
+import { Provider } from "react-redux"
+
+const store = setupStore()
 
 function App() {
   return (
-    <SideBarProvider>
-      <AppRoutes />
-    </SideBarProvider>
+    <Provider store={store}>
+      <SideBarProvider>
+        <AppRoutes />
+      </SideBarProvider>
+    </Provider>
   );
 
 }

@@ -21,7 +21,7 @@ const menu: menuType[] = [
     {
         icon: Clock,
         label: 'Operação Diária',
-        roles: ['admin'],
+        roles: ['corporativo'],
         to: '/operacao-diaria',
     }
 ]

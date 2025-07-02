@@ -4,6 +4,7 @@ import logoEquatorial from '../../assets/images/logo-equatorial.png';
 import logoEquatorialBranca from '../../assets/images/logo-equatorial-branca.png';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../../api/authApiSlice';
 
 interface LoginForm {
     username: string;
@@ -14,11 +15,20 @@ const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>();
     const navigate = useNavigate();
 
+    const [login] = useLoginMutation();
+
     const onSubmit = (data: LoginForm) => {
         console.log(data);
-        if(data.username === 'admin' && data.password === 'admin123') {
-            navigate('/oee');
-        }
+        login(data)
+            .unwrap()
+            .then((response) => {
+                console.log('Login successful:', response);
+                console.log(data);
+                navigate('/oee', { replace: true });
+            })
+            .catch((error) => {
+                console.error('Login failed:', error);
+            });
     };
 
     // const onFinish = async (values: LoginFormValues) => {
